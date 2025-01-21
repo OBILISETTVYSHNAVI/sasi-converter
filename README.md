@@ -1,2 +1,2 @@
 # sasi-converter
-Currency conveter
+Currency Conveter
