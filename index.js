@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 
 
-app.post('/convert', (req, res) => {
+app.get('/convert', (req, res) => {
     const { inr } = req.body; 
 
     if (typeof inr !== 'number' || inr <= 0) {
