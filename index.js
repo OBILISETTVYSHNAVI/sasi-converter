@@ -1,24 +1,34 @@
-const readline = require('readline');
-const convert = require('./convert')
-const rl = readline.createInterface({
-input: process.stdin,
-output: process.stdout
+const express = require('express');
+const convert = require('./convert'); 
+
+const app = express();
+
+app.use(express.json());
+
+
+app.post('/convert', (req, res) => {
+    const { inr } = req.body; 
+
+    if (typeof inr !== 'number' || inr <= 0) {
+        return res.status(400).json({ error: 'Invalid INR amount. Please provide a positive number.' });
+    }
+
+    try {
+        
+        const usd = convert(inr);
+        res.json({ inr, usd });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
-const promptUser = () => {
-rl.question('Enter amount (INR): ', (input) => {
-if (input.toLowerCase() === 'exit') {
-console.log("Goodbye!");
-rl.close();
-return;
-}
-const inr = parseFloat(input);
-try {
-const usd = convert(inr);
-console.log(`INR ${inr} = USD ${usd}\n`);
-}catch(e){
-console.log(e);
-}
-promptUser();
+
+
+app.use((req, res) => {
+    res.status(404).json({ error: 'Endpoint not found' });
 });
-};
-promptUser();
+
+
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running at http://localhost:${PORT}`);
+});
