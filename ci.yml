@@ -35,5 +35,5 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           - name: Build and push Docker image
           run: |
-          docker build -t sasi-converter:latest .
-          docker push sasi-converter:latest
+          docker build -t obilisettyvyshnavi/sasi-converter:latest .
+          docker push obilisettyvyshnavi/sasi-converter:latest
