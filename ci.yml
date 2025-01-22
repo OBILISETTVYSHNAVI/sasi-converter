@@ -2,9 +2,9 @@ name: Converter CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main","master" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main","master"]
 
 jobs:
   build:
@@ -35,5 +35,5 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           - name: Build and push Docker image
           run: |
-          docker build -t obilisettyvyshnavi/sasi-converter:latest .
-          docker push obilisettyvyshnavi/sasi-converter:latest
+          docker buiid -t sasi-converter:latest .
+          docker push sasi-converter:latest
