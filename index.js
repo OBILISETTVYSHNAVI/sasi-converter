@@ -17,4 +17,8 @@ res.status(500).json({ error: e });
 }
 });
 const PORT = process.env.PORT || 3000;
+<<<<<<< HEAD
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+=======
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+>>>>>>> 82c4ae023d098337bfa65194288658717a7d9bc5
